@@ -22,7 +22,6 @@ COPY ./exim.conf /etc/exim
 
 USER exim
 VOLUME ["/var/spool/exim"]
-VOLUME ["/var/spool/mail"]
 EXPOSE 25
 
 ENTRYPOINT ["/usr/sbin/exim"]
