@@ -1,0 +1,17 @@
+version: "2"
+services:
+  exim-relay:
+    restart: always
+    image: pristavkin/exim-relay
+    build: .
+    user: exim
+    ports:
+      - "25:25"
+    volumes:
+      - exim-spool:/var/spool/exim
+    hostname: mail.example.com
+    environment:
+      - RELAY_FROM_HOSTS=10.0.0.0/8:172.16.0.0/12:192.168.0.0/16
+volumes:
+  exim-spool:
+    driver: local
